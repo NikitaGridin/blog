@@ -12,9 +12,6 @@ export default function Home() {
   return (
     <main>
       <h1>Hello World!</h1>
-      <h1>Hello World!</h1>
-      <h1>Hello World!</h1>
-      <h1>Hello World!</h1>
       <Card>
         <CardHeader>
           <CardTitle>Card Title</CardTitle>
