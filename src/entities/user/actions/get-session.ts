@@ -1,17 +1,10 @@
 'use server'
 
 import { privateConfig } from '@/shared/config/private.config'
+import { db } from '@/shared/lib/db'
 import jwt from 'jsonwebtoken'
 import { cookies } from 'next/headers'
-
-type Session = {
-  id: string
-  email: string
-  role: 'ADMIN' | 'USER'
-  name: string
-  image: string | null
-  iat: number
-}
+import { Session } from '../types/types'
 
 export async function getSession(): Promise<Session | null> {
   try {
@@ -20,7 +13,8 @@ export async function getSession(): Promise<Session | null> {
     if (!token || !token.value) return null
 
     const data = jwt.verify(token.value, privateConfig.SECRET_JWT) as Session
-    return data
+    const user = db.user.findFirst({ where: { id: data.id } })
+    return user
   } catch (error) {
     console.log(error)
     throw new Error('get session error')

@@ -1,7 +1,7 @@
 'use client'
 import { useSession } from '@/entities/user/queries/use-session'
 import { routes } from '@/shared/routes'
-import { User } from 'lucide-react'
+import { LogIn } from 'lucide-react'
 import Link from 'next/link'
 
 export function Profile() {
@@ -10,12 +10,16 @@ export function Profile() {
   if (isError || !data)
     return (
       <Link href={routes.LOGIN}>
-        <User />
+        <LogIn />
       </Link>
     )
   return (
-    <Link href={routes.PROFILE}>
-      <User />
+    <Link
+      href={routes.PROFILE}
+      className="uppercase rounded-full w-10 h-10 border flex items-center justify-center hover:bg-gray-100"
+    >
+      {data.email[0]}
+      {data.email[1]}
     </Link>
   )
 }

@@ -7,7 +7,7 @@ export function Header({ variant }: { variant: 'public' | 'auth' | 'private' }) 
     <header className="bg-white mb-6 dark:bg-black dark:border-b dark:border-gray-800">
       <div className="h-20 container flex items-center justify-between">
         <Logo />
-        <nav className="flex items-center gap-4">
+        <nav className="flex items-center gap-2">
           <ModeToggle />
           <Profile />
         </nav>
