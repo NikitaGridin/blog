@@ -18,7 +18,6 @@ export async function getSession(): Promise<Session> {
 
     return user as Session
   } catch (error) {
-    console.log(error)
     throw new Error('get session error')
   }
 }

@@ -33,5 +33,5 @@ export async function GET(req: Request, res: Response) {
     path: '/',
     secure: true,
   })
-  redirect(routes.PROFILE)
+  redirect(routes.PROFILE + '/' + user.id)
 }
