@@ -7,7 +7,8 @@ export async function Profile({ userId }: { userId: string }) {
   const session = await getSession()
   const user = await getUser({ id: userId })
   if (!user) return <div>Пользователь не найден</div>
-  const isOwner = user.id === session.id
+
+  const isOwner = session ? user.id === session.id : false
 
   return (
     <div className="bg-white rounded-md p-4 dark:bg-gray-900 space-y-4">
