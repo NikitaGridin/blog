@@ -2,12 +2,12 @@ import { privateConfig } from '@/shared/config/private.config'
 import { db } from '@/shared/lib/db'
 import { routes } from '@/shared/routes'
 import jwt from 'jsonwebtoken'
-import { NextApiRequest } from 'next'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
+import { NextResponse } from 'next/server'
 
-export async function GET(req: NextApiRequest) {
-  if (!req.url) return Response.json({ error: 'Bad Request: URL is missing' }, { status: 400 })
+export async function GET(req: Request, res: Response) {
+  if (!req.url) return NextResponse.json({ error: 'Bad Request: URL is missing' }, { status: 400 })
 
   const { searchParams } = new URL(req.url)
 
@@ -16,7 +16,7 @@ export async function GET(req: NextApiRequest) {
   if (!token || !email) return Response.json({ error: 'Invalid Link' }, { status: 400 })
 
   const tokenDB = await db.verificationToken.findFirst({ where: { token } })
-  if (!tokenDB) return Response.json({ error: 'Token not found' }, { status: 404 })
+  if (!tokenDB) return NextResponse.json({ error: 'Token not found' }, { status: 404 })
   if (tokenDB.expires < new Date()) return Response.json({ error: 'Token expired' })
 
   const user = await db.user.findFirst({ where: { email } })
