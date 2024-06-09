@@ -9,7 +9,9 @@ export default function Layout({
   return (
     <>
       <Header variant={'public'} />
-      <AuthGuard>{children}</AuthGuard>
+      <main className="container">
+        <AuthGuard>{children}</AuthGuard>
+      </main>
     </>
   )
 }

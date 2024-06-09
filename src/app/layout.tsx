@@ -12,7 +12,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cn('min-h-screen bg-gray-100', font.className)}>
+      <body className={cn('min-h-screen bg-gray-100 dark:bg-black', font.className)}>
         <AppProvider>{children}</AppProvider>
       </body>
     </html>

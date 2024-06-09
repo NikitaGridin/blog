@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 export function Logo() {
   return (
-    <Link href={routes.MAIN} className="text-xl font-bold text-blue-600">
+    <Link href={routes.MAIN} className="text-xl font-bold text-blue-600 dark:text-white">
       NIKITA/BLOG
     </Link>
   )
