@@ -1,3 +1,4 @@
+'use client'
 import { useLogout } from '@/entities/user/mutations/use-logout'
 import { Button } from '@/shared/ui/button'
 

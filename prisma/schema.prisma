@@ -8,17 +8,34 @@ datasource db {
 }
 
 model User {
-  id    String  @id @default(cuid())
-  email String  @unique
-  role  ROLE    @default(USER)
-  name  String?
-  image String?
+  id       String    @id @default(cuid())
+  email    String    @unique
+  role     ROLE      @default(USER)
+  name     String?
+  image    String?
+  articles Article[]
 }
 
 model VerificationToken {
   id      String   @id @default(cuid())
   token   String   @unique
   expires DateTime
+}
+
+model Article {
+  id      String         @id @default(cuid())
+  title   String
+  content String
+  cover   String?
+  User    User           @relation(fields: [userId], references: [id])
+  userId  String
+  status  ARTICLE_STATUS @default(AWAIT_CONFIRM)
+}
+
+enum ARTICLE_STATUS {
+  AWAIT_CONFIRM
+  PUBLISHED
+  REJECTED
 }
 
 enum ROLE {

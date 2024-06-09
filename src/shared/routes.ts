@@ -6,4 +6,6 @@ export const routes = {
   NEW_USER: '/auth/new-user',
 
   PROFILE: '/profile',
+
+  ADD_ARTICLE: '/add-article',
 }

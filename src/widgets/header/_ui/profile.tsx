@@ -15,8 +15,8 @@ export function Profile() {
     )
   return (
     <Link
-      href={routes.PROFILE}
-      className="uppercase rounded-full w-10 h-10 border flex items-center justify-center hover:bg-gray-100"
+      href={routes.PROFILE + '/' + data.id}
+      className="uppercase rounded-full w-10 h-10 border flex items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-900"
     >
       {data.email[0]}
       {data.email[1]}
